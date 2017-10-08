@@ -1,19 +1,19 @@
 {
   "name": "vuex-mutations",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "lib/index.js",
   "author": "dex <piotrekfracek@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "mocha test.js"
+    "test": "mocha test.js",
+    "docs": "jsdoc2md -t .docs/README.md lib/*.js > README.md; echo"
   },
   "dependencies": {
-    "curry": "^1.2.0",
-    "dot-prop": "^4.2.0",
-    "filter-where": "^1.0.1"
+    "dot-prop": "^4.2.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "jsdoc-to-markdown": "^3.0.0",
     "mocha": "^4.0.1",
     "vue": "^2.4.4",
     "vuex": "^2.4.1"
