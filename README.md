@@ -11,15 +11,15 @@ Factory of vuex mutations. DRY.
 
 ```bash
 # npm
-npm i --save vuex-mutations
+npm i --save @inventistudio/vuex-mutations
 # or yarn
-yarn add vuex-mutations
+yarn add @inventistudio/vuex-mutations
 ```
 
 ## Example
 
 ```javascript
-import Mutations from 'vuex-mutations'
+import Mutations from '@inventistudio/vuex-mutations'
 
 const state = {
   // Prepare state
