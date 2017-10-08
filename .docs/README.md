@@ -1,13 +1,28 @@
-# vuex-mutations
+# vuex-mutations, by [InventiStudio](https://inventi.studio)
 
-Factory of vuex mutations
+Factory of vuex mutations. DRY.
+
+#### Table of Contents
+- [Install](#install)
+- [Example](#example)
+- [API Documentation](#api)
+
+## Install
+
+```bash
+# npm
+npm i --save vuex-mutations
+# or yarn
+yarn add vuex-mutations
+```
 
 ## Example
 
 ```javascript
-import mutations from 'vuex-mutations'
+import Mutations from 'vuex-mutations'
 
 const state = {
+  // Prepare state
   me: {
     login: '',
     email: '',
@@ -16,12 +31,21 @@ const state = {
 }
 
 const mutations = {
-  SET_USER:          mutations.set('me'),
-  UPDATE_USER_EMAIL: mutations.set('me.email'),
-  ADD_COMMENT:       mutations.add('comments'),
-  UPDATE_COMMENT:    mutations.update('comments', { matchBy: 'comment_id' }),
-  REMOVE_COMMENT:    mutations.remove('comments', { matchBy: 'comment_id' }),
-  ADD_FULL_COMMENT:  mutations.addOrUpdate('comments', { matchBy: 'comment_id' })
+  // Magic
+  SET_USER:          Mutations.set('me'),
+  UPDATE_USER_EMAIL: Mutations.set('me.email'),
+  ADD_COMMENT:       Mutations.add('comments'),
+  UPDATE_COMMENT:    Mutations.update('comments', { matchBy: 'comment_id' }),
+  REMOVE_COMMENT:    Mutations.remove('comments', { matchBy: 'comment_id' }),
+  ADD_FULL_COMMENT:  Mutations.addOrUpdate('comments', { matchBy: 'comment_id' })
+}
+
+const actions = {
+  // Do your stuff here. Use mutations.
+  SET_USER_ACTION({ commit }, user) {
+    commit('SET_USER', user)
+  }
+  // (...)
 }
 ```
 

@@ -1,13 +1,28 @@
-# vuex-mutations
+# vuex-mutations, by [InventiStudio](https://inventi.studio)
 
-Factory of vuex mutations
+Factory of vuex mutations. DRY.
+
+#### Table of Contents
+- [Install](#install)
+- [Example](#example)
+- [API Documentation](#api)
+
+## Install
+
+```bash
+# npm
+npm i --save vuex-mutations
+# or yarn
+yarn add vuex-mutations
+```
 
 ## Example
 
 ```javascript
-import mutations from 'vuex-mutations'
+import Mutations from 'vuex-mutations'
 
 const state = {
+  // Prepare state
   me: {
     login: '',
     email: '',
@@ -16,36 +31,45 @@ const state = {
 }
 
 const mutations = {
-  SET_USER:          mutations.set('me'),
-  UPDATE_USER_EMAIL: mutations.set('me.email'),
-  ADD_COMMENT:       mutations.add('comments'),
-  UPDATE_COMMENT:    mutations.update('comments', { matchBy: 'comment_id' }),
-  REMOVE_COMMENT:    mutations.remove('comments', { matchBy: 'comment_id' }),
-  ADD_FULL_COMMENT:  mutations.addOrUpdate('comments', { matchBy: 'comment_id' })
+  // Magic
+  SET_USER:          Mutations.set('me'),
+  UPDATE_USER_EMAIL: Mutations.set('me.email'),
+  ADD_COMMENT:       Mutations.add('comments'),
+  UPDATE_COMMENT:    Mutations.update('comments', { matchBy: 'comment_id' }),
+  REMOVE_COMMENT:    Mutations.remove('comments', { matchBy: 'comment_id' }),
+  ADD_FULL_COMMENT:  Mutations.addOrUpdate('comments', { matchBy: 'comment_id' })
+}
+
+const actions = {
+  // Do your stuff here. Use mutations.
+  SET_USER_ACTION({ commit }, user) {
+    commit('SET_USER', user)
+  }
+  // (...)
 }
 ```
 
 ## API
 
-<a name="module_mutations"></a>
+<a name="module_Mutations"></a>
 
-## mutations
+## Mutations
 Collection of functions that creates mutations
 
 
-* [mutations](#module_mutations)
-    * [.add(path, options)](#module_mutations.add) ⇒ <code>Mutation(state, element)</code>
-    * [.update(path, options)](#module_mutations.update) ⇒ <code>Mutation(state, element)</code>
-    * [.addOrUpdate(path, options)](#module_mutations.addOrUpdate) ⇒ <code>Mutation(state, element)</code>
-    * [.remove(path, options)](#module_mutations.remove) ⇒ <code>Mutation(state, element)</code>
-    * [.set(path)](#module_mutations.set) ⇒ <code>Mutation(state, element)</code>
+* [Mutations](#module_Mutations)
+    * [.add(path, options)](#module_Mutations.add) ⇒ <code>Mutation(state, element)</code>
+    * [.update(path, options)](#module_Mutations.update) ⇒ <code>Mutation(state, element)</code>
+    * [.addOrUpdate(path, options)](#module_Mutations.addOrUpdate) ⇒ <code>Mutation(state, element)</code>
+    * [.remove(path, options)](#module_Mutations.remove) ⇒ <code>Mutation(state, element)</code>
+    * [.set(path)](#module_Mutations.set) ⇒ <code>Mutation(state, element)</code>
 
-<a name="module_mutations.add"></a>
+<a name="module_Mutations.add"></a>
 
-### mutations.add(path, options) ⇒ <code>Mutation(state, element)</code>
+### Mutations.add(path, options) ⇒ <code>Mutation(state, element)</code>
 It creates mutation that adds element to array
 
-**Kind**: static method of [<code>mutations</code>](#module_mutations)  
+**Kind**: static method of [<code>Mutations</code>](#module_Mutations)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -56,16 +80,16 @@ It creates mutation that adds element to array
 **Example**  
 ```js
 const mutations = {
-  ADD_USER:        update('users'),
-  ADD_USER_AT_END: update('users', { position: 'last' }),
+  ADD_USER:        add('users'),
+  ADD_USER_AT_END: add('users', { position: 'last' }),
 }
 ```
-<a name="module_mutations.update"></a>
+<a name="module_Mutations.update"></a>
 
-### mutations.update(path, options) ⇒ <code>Mutation(state, element)</code>
+### Mutations.update(path, options) ⇒ <code>Mutation(state, element)</code>
 It creates mutation that update element of array. It does nothing if not found
 
-**Kind**: static method of [<code>mutations</code>](#module_mutations)  
+**Kind**: static method of [<code>Mutations</code>](#module_Mutations)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -81,12 +105,12 @@ const mutations = {
   UPDATE_BY_CUSTOM_FUNC: update('path.to.array', { matchBy(a, b) { return a.name === b.name } }),
 }
 ```
-<a name="module_mutations.addOrUpdate"></a>
+<a name="module_Mutations.addOrUpdate"></a>
 
-### mutations.addOrUpdate(path, options) ⇒ <code>Mutation(state, element)</code>
+### Mutations.addOrUpdate(path, options) ⇒ <code>Mutation(state, element)</code>
 It creates mutation that update element of array if found. It adds it if not.
 
-**Kind**: static method of [<code>mutations</code>](#module_mutations)  
+**Kind**: static method of [<code>Mutations</code>](#module_Mutations)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -98,17 +122,17 @@ It creates mutation that update element of array if found. It adds it if not.
 **Example**  
 ```js
 const mutations = {
-  UPDATE_OR_ADD_BY_REFERENCE:   update('path.to.array'),
-  UPDATE_OR_ADD_BY_ID:          update('path.to.array', { matchBy: 'data.id', position: 'last' }),
-  UPDATE_OR_ADD_BY_CUSTOM_FUNC: update('path.to.array', { matchBy(a, b) { return a.name === b.name } }),
+  UPDATE_OR_ADD_BY_REFERENCE:   addOrUpdate('path.to.array'),
+  UPDATE_OR_ADD_BY_ID:          addOrUpdate('path.to.array', { matchBy: 'data.id', position: 'last' }),
+  UPDATE_OR_ADD_BY_CUSTOM_FUNC: addOrUpdate('path.to.array', { matchBy(a, b) { return a.name === b.name } }),
 }
 ```
-<a name="module_mutations.remove"></a>
+<a name="module_Mutations.remove"></a>
 
-### mutations.remove(path, options) ⇒ <code>Mutation(state, element)</code>
+### Mutations.remove(path, options) ⇒ <code>Mutation(state, element)</code>
 It creates mutation that remove element from array. It does nothing if not found
 
-**Kind**: static method of [<code>mutations</code>](#module_mutations)  
+**Kind**: static method of [<code>Mutations</code>](#module_Mutations)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -124,12 +148,12 @@ const mutations = {
   REMOVE_BY_CUSTOM_FUNC: remove('path.to.array', { matchBy(a, b) { return a.name === b.name } }),
 }
 ```
-<a name="module_mutations.set"></a>
+<a name="module_Mutations.set"></a>
 
-### mutations.set(path) ⇒ <code>Mutation(state, element)</code>
+### Mutations.set(path) ⇒ <code>Mutation(state, element)</code>
 It creates mutation that set object property.
 
-**Kind**: static method of [<code>mutations</code>](#module_mutations)  
+**Kind**: static method of [<code>Mutations</code>](#module_Mutations)  
 
 | Param | Type | Description |
 | --- | --- | --- |
