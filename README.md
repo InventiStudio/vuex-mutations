@@ -54,7 +54,7 @@ const actions = {
 <a name="module_Mutations"></a>
 
 ## Mutations
-Collection of functions that creates mutations
+Collection of functions that create mutations
 
 
 * [Mutations](#module_Mutations)
@@ -87,7 +87,7 @@ const mutations = {
 <a name="module_Mutations.update"></a>
 
 ### Mutations.update(path, options) ⇒ <code>Mutation(state, element)</code>
-It creates mutation that update element of array. It does nothing if not found
+It creates mutation that updates element of array. It does nothing if not found
 
 **Kind**: static method of [<code>Mutations</code>](#module_Mutations)  
 
@@ -108,7 +108,7 @@ const mutations = {
 <a name="module_Mutations.addOrUpdate"></a>
 
 ### Mutations.addOrUpdate(path, options) ⇒ <code>Mutation(state, element)</code>
-It creates mutation that update element of array if found. It adds it if not.
+It creates mutation that updates element of array if found. It adds it if not.
 
 **Kind**: static method of [<code>Mutations</code>](#module_Mutations)  
 
@@ -130,7 +130,7 @@ const mutations = {
 <a name="module_Mutations.remove"></a>
 
 ### Mutations.remove(path, options) ⇒ <code>Mutation(state, element)</code>
-It creates mutation that remove element from array. It does nothing if not found
+It creates mutation that removes element from array. It does nothing if not found
 
 **Kind**: static method of [<code>Mutations</code>](#module_Mutations)  
 
@@ -151,7 +151,7 @@ const mutations = {
 <a name="module_Mutations.set"></a>
 
 ### Mutations.set(path) ⇒ <code>Mutation(state, element)</code>
-It creates mutation that set object property.
+It creates mutation that sets object property.
 
 **Kind**: static method of [<code>Mutations</code>](#module_Mutations)  
 
